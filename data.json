@@ -1,62 +1,98 @@
 [
     {
-    "id": 1,
-    "Menu" : "",
-    "Price": "",
-    "Descripttion": ""
-    },
-    {
-    "id": 2,
-    "Menu" : "",
-    "Price": "",
-    "Descripttion": ""
-    },
-    {
-    "id": 3,
-    "Menu" : "",
-    "Price": "",
-    "Descripttion": ""
-    },
-        {
-    "id": 4,
-    "Menu" : "",
-    "Price": "",
-    "Descripttion": ""
-    },
-    {
-    "id": 5,
-    "Menu" : "",
-    "Price": "",
-    "Descripttion": ""
-    },
-    {
-    "id": 6,
-    "Menu" : "",
-    "Price": "",
-    "Descripttion": ""
-    },
-    {
-    "id": 7,
-    "Menu" : "",
-    "Price": "",
-    "Descripttion": ""
-    },
-    {
-    "id": 8,
-    "Menu" : "",
-    "Price": "",
-    "Descripttion": ""
-    },
-    {
-    "id": 9,
-    "Menu" : "",
-    "Price": "",
-    "Descripttion": ""
-    },
-    {
-    "id": 10,
-    "Menu" : "",
-    "Price": "",
-    "Descripttion": ""
-    }
+          "food": [
+              {
+                "id": 1,
+                "name" : "Rice",
+                "price": 11.000,
+                "descripttion": "Nasi lembek dan kecil dengan harga besar"
+              },
+              {
+                "id": 2,
+                "name" : "Fun Fries",
+                "price": 30.500,
+                "descripttion": "Kentang Goreng KFC"
+              },
+              {
+                "id": 3,
+                "name" : "Spaghetti Deluxe",
+                "price": 13.500,
+                "descripttion": "Spageti pedas KFC"
+              },
+              {
+                "id": 4,
+                "name" : "Super Komplit",
+                "price": 56.000,
+                "descripttion": "1 Crispy Burger + Halp Winger + 1 French Fries Reg + 1 Fanta Reguler"
+              },
+              {
+                "id": 5,
+                "name" : "Super Komplit",
+                "price": 50.500,
+                "descripttion": "1 Pc Chicken + 1 rice + 1 Cream Soup + 1 Mocha Float"
+              },
+              {
+                "id": 6,
+                "name" : "Super Besar",
+                "price": 41.500,
+                "descripttion": "1 pc Chiken + 1 Rice + 1 Coca-cola Medium"
+              },
+              {
+                "id": 7,
+                "name" : "Kombo Crispy Burger",
+                "price": 45.500,
+                "descripttion": "1 Crispy Burger + 1 French Fries Reg + 1 Fanta Reguler"
+              },
+              {
+                "id": 8,
+                "name" : "1 Pc Chicken",
+                "price": 24.500,
+                "descripttion": "Ayam dada atas "
+              },
+              {
+                "id": 9,
+                "name" : "KFC Soup",
+                "price": 13.000,
+                "descripttion": "Sayur Asem"
+              }
+          ],
+          "drink": [
+              {
+                "id": 1,
+                "name" : "Mangot Float",
+                "price": 14.000,
+                "descripttion": "Mangot Float minuman es lemon"
+              },
+              {
+                "id": 2,
+                "name" : "Mocha Float",
+                "price": 18.500,
+                "descripttion": "Mocha Float minuman kopi"
+              },
+              {
+                "id": 3,
+                "name" : "Cola Float",
+                "price": 12.000,
+                "descripttion": "Coca Cola pake es batu"
+              },
+              {
+                "id": 4,
+                "name" : "Fanta Float",
+                "price": 12.000,
+                "descripttion": "Fanta Float, Fanta warna merah"
+              },
+              {
+                "id": 5,
+                "name" : "Ice Coffee Nescafe",
+                "price": 15.500,
+                "descripttion": "Nescafe buat KFC "
+              },
+              {
+                "id": 6,
+                "name" : "Mineral Water",
+                "price": 10.000,
+                "descripttion": "Aqua versi mahal"
+              }
+          ]
+      }
 ]
