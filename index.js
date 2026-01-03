@@ -14,36 +14,24 @@ function mainMenu() {
         3. Keranjang
         0. Kembali
         `);
-
   rl.on("line", (a) => {
     return handleMenu(a);
   });
 }
+mainMenu();
 
 function handleMenu(a) {
   //
   switch (a) {
     case "1":
-      // menu()
-      // mainMenu()
-
-      async function displayData() {
-        try {
-          console.log("Fetching data...");
-          const data = await menu(); // Pauses until fetchData is complete
-          console.log("Data received:");
-        } catch (error) {
-          console.error("Error fetching data:", error);
-        }
-      }
-      displayData()
-
+        console.log("Sedang memproses mohon ditunggu");
+        menu()
       break;
     case "2":
       console.log("data kedua");
       break;
-    case "4":
-      console.log("data keempat");
+    case "3":
+      console.log("data ketigas");
       break;
     case "0":
       // rl.on('SIGINT', () => {
@@ -55,13 +43,13 @@ function handleMenu(a) {
       break;
     default:
       console.log("input tidak valid");
-      rl.close();
+      mainMenu();
       break;
   }
   //   mainMenu()
 }
 
-mainMenu();
+// mainMenu();
 
 // if user pers ctr+c
 // rl.on('SIGINT', () => {
