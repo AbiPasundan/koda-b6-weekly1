@@ -20,8 +20,11 @@ function mainMenu() {
 }
 mainMenu();
 
+
+
 function handleMenu(a) {
   //
+  
   switch (a) {
     case "1":
         console.log("Sedang memproses mohon ditunggu");
@@ -31,29 +34,22 @@ function handleMenu(a) {
       console.log("data kedua");
       break;
     case "3":
-      console.log("data ketigas");
+      console.log("data ketiga");
       break;
     case "0":
-      // rl.on('SIGINT', () => {
-      //     rl.question('Exit (y or n)? ', (input) => {
-      //         if (input.match(/^y(es)?$/i)) { rl.pause(); }
-      //     });
-      // });
-      rl.close();
+      rl.question('Exit (y or n)? ', (input) => {
+        if (input.match(/^y(es)?$/i)) {
+          console.log('Exiting application...');
+          rl.close();
+        } else {
+          console.log('Cancelled exit. Returning to menu.');
+          menu(); 
+        }
+      });
       break;
     default:
       console.log("input tidak valid");
       mainMenu();
       break;
   }
-  //   mainMenu()
 }
-
-// mainMenu();
-
-// if user pers ctr+c
-// rl.on('SIGINT', () => {
-//     rl.question('Exit (y or n)? ', (input) => {
-//         if (input.match(/^y(es)?$/i)) { rl.pause(); }
-//     });
-// });
