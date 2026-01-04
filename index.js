@@ -1,4 +1,4 @@
-const readline = require("readline");
+import readline from "readline";
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -13,88 +13,6 @@ let data = [];
 let cart = [];
 let bill = [];
 
-async function loadData() {
-  if (data.length > 0) {
-    return;
-  }
-  const res = await fetch(url);
-  data = await res.json();
-}
-
-function mainMenu() {
-  console.clear();
-  console.log(`
-=== MAIN MENU ===
-1. Tambah Data
-2. Lihat Keranjang
-3. Check Out
-4. History
-0. Keluar
-`);
-  currentMenu = "MAIN";
-}
-
-function showDataMenu() {
-  console.clear();
-  console.log("=== DATA PEMBELIAN ===");
-  console.table(data);
-
-  console.log(`
-Masukkan ID menu untuk menambahkan ke keranjang
-0. Kembali
-`);
-  currentMenu = "ADD";
-}
-
-function showCart() {
-  console.clear();
-  console.log("=== KERANJANG ===");
-
-  if (cart.length === 0) {
-    console.log("Keranjang masih kosong");
-  } else {
-    console.table(cart);
-  }
-
-  console.log(`
-0. Kembali
-`);
-  currentMenu = "CART";
-}
-
-function checkOut() {
-  console.clear();
-  console.log("=== CHECKOUT ===");
-  if (cart.length === 0) {
-    console.log("belum ada barang belanjaan");
-  } else {
-    // console.log("yakin ingin Checkout?");
-    console.log(cart);
-  }
-  console.log(`
-1. Checkout
-0. Kembali
-`);
-// inisialisasi
-  currentMenu = "CHECKOUT";
-}
-
-function historyBill() {
-  console.clear();
-  console.log("=== History ===");
-  if (data.length === 0) {
-    console.log("Riwayat Belanja Masih Kosong");
-  } else {
-    console.log("Ok ada Riwayat Belanja");
-    console.log(data);
-  }
-  console.log(`
-1. Nyenyenye
-0. Kembali
-`);
-// inisialisasi
-  currentMenu = "CHECKOUT";
-}
 
 rl.on("line", async (input) => {
   switch (currentMenu) {
@@ -116,6 +34,29 @@ rl.on("line", async (input) => {
   }
 });
 
+
+async function loadData() {
+  if (data.length > 0) {
+    return;
+  }
+  const res = await fetch(url);
+  data = await res.json();
+}
+
+// main menu start
+function mainMenu() {
+  console.clear();
+  console.log(`
+=== MAIN MENU ===
+1. Tambah Data
+2. Lihat Keranjang
+3. Check Out
+4. History
+0. Kaluar
+`);
+  currentMenu = "MAIN";
+}
+
 async function handleMainMenu(input) {
   switch (input.trim()) {
     case "1":
@@ -134,7 +75,7 @@ async function handleMainMenu(input) {
       break;
 
     case "0":
-      rl.question("Apakah yakin ingin keluar (y/n)? ", (answer) => {
+      rl.question("Apakah yakin ingin kaluar (y/n)? ", (answer) => {
         if (/^y(es)?$/i.test(answer)) {
           rl.close();
         } else {
@@ -148,6 +89,36 @@ async function handleMainMenu(input) {
   }
 }
 
+// main menu end 
+
+function showDataMenu() {
+  console.clear();
+  console.log("=== DATA PEMBELIAN ===");
+  console.table(data);
+
+  console.log(`
+Masukkan ID menu untuk menambahkan ke keranjang
+0. Kembali
+`);
+  currentMenu = "ADD";
+}
+
+// cart start
+function showCart() {
+  console.clear();
+  console.log("=== KERANJANG ===");
+
+  if (cart.length === 0) {
+    console.log("Keranjang masih kosong");
+  } else {
+    console.table(cart);
+  }
+
+  console.log(`
+0. Kembali
+`);
+  currentMenu = "CART";
+}
 function handleAddMenu(input) {
   input = input.trim();
 
@@ -174,7 +145,25 @@ function handleAddMenu(input) {
   console.log("Menu berhasil ditambahkan ke keranjang");
   console.table([selected]);
 }
+// cart end
 
+// check out start
+function checkOut() {
+  console.clear();
+  console.log("=== CHECKOUT ===");
+  if (cart.length === 0) {
+    console.log("belum ada barang belanjaan");
+  } else {
+    // console.log("yakin ingin Checkout?");
+    console.table(cart);
+  }
+  console.log(`
+1. Checkout
+0. Kembali
+`);
+  // inisialisasi
+  currentMenu = "CHECKOUT";
+}
 function hanleCheckOut(input) {
   input = input.trim();
   if (input === "0") {
@@ -186,7 +175,10 @@ function hanleCheckOut(input) {
     rl.question("yakin ingin Checkout? y/n", (answer) => {
       if (/^y(es)?$/i.test(answer)) {
         console.log("ok let's go");
-        console.log(data.push(bill.name));
+        // bill  = console.log(data.push(bill.name));
+        // bill = [{ ...cart }];
+        bill.push([...cart]);
+        cart = [];
         //   mainMenu();
       } else {
         mainMenu();
@@ -198,9 +190,48 @@ function hanleCheckOut(input) {
     return;
   }
 }
+// check out end
+
+// history start
+function historyBill() {
+  console.clear();
+  console.log("=== History ===");
+  if (bill.length === 0) {
+    console.log("Riwayat Belanja Masih Kosong");
+  } else {
+    console.log("Ok ada Riwayat Belanja");
+    bill.forEach(element => {
+      
+      console.table(element);
+    });
+  }
+  console.log(`
+0. Kembali
+`);
+  // inisialisasi
+  currentMenu = "HISTORY";
+}
 
 function handleHistoryBill(input) {
-  console.log("history", input);
+  input = input.trim();
+  if (input !== "0") {
+    console.log("INPUT TIDACK PALID");
+  }
+  if (input === "0") {
+    mainMenu();
+    return;
+  }
+  //   console.log("history");
+  //   console.log(data.push(bill.name));
 }
+
+// history end
+
+
+
+
+
+
+
 
 mainMenu();
